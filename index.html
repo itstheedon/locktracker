@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lock Production Tracker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="style.css">
+    <!-- Include SheetJS for Excel import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 </head>
 <body>
     <h1>Lock Production Tracker</h1>
+    
     <div class="form">
-        <label>Date: <input type="date" id="date"></label><br>
-        <label>Pieces Made: <input type="number" id="piecesMade" min="0"></label><br>
-        <label>Pieces Sold: <input type="number" id="piecesSold" min="0"></label><br>
-        <label>Price per Piece: <input type="number" id="pricePerPiece" step="0.01" min="0"></label><br>
-        <label>Price of Hair: <input type="number" id="priceOfHair" value="0" readable></label><br>
-        <label>Paid for Hair: <input type="checkbox" id="paidForHair"></label><br>
+        <input type="date" id="date" placeholder="Date" required>
+        <input type="number" id="piecesMade" placeholder="Pieces Made" required>
+        <input type="number" id="piecesSold" placeholder="Pieces Sold" required>
+        <input type="number" id="pricePerPiece" placeholder="Price per Piece (Ksh)" required>
+        <input type="number" id="priceOfHair" placeholder="Price of Hair (Ksh)">
+        <label><input type="checkbox" id="paidForHair"> Paid for Hair</label>
         <button onclick="addRecord()">Add Record</button>
-        <button onclick="exportToSpreadsheet()">Export to Spreadsheet</button>
+        <input type="file" id="fileInput" accept=".xlsx, .xls">
+        <button onclick="importData()">Import from Excel</button>
+        <button onclick="exportToSpreadsheet()">Export to Excel</button>
+        <button onclick="deleteAllRecords()">Delete All Records</button>
     </div>
     
     <table id="recordsTable">
@@ -30,14 +33,14 @@
                 <th>Pieces Sold</th>
                 <th>Remaining Inventory</th>
                 <th>Total Value (Ksh)</th>
-                <th>Cumulative Pieces Sold</th>
-                <th>Cumulative Value of Pieces Sold (Ksh)</th>
-                <th>Price of Hair (Ksh)</th> <!-- New Column for Price of Hair -->
-                <th>Paid for Hair</th> <!-- New Column for Paid Status -->
+                <th>Daily Pieces Sold</th>
+                <th>Daily Value of Pieces Sold (Ksh)</th>
+                <th>Price of Hair (Ksh)</th>
+                <th>Paid for Hair</th>
+                <th>Actions</th> <!-- For delete single record button -->
             </tr>
         </thead>
-        <tbody>
-        </tbody>
+        <tbody></tbody>
     </table>
 
     <script src="app.js"></script>

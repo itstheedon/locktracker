@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lock Production Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Lock Production Tracker</h1>
+    <div class="form">
+        <label>Date: <input type="date" id="date"></label><br>
+        <label>Pieces Made: <input type="number" id="piecesMade" min="0"></label><br>
+        <label>Pieces Sold: <input type="number" id="piecesSold" min="0"></label><br>
+        <label>Price per Piece: <input type="number" id="pricePerPiece" step="0.01" min="0"></label><br>
+        <label>Price of Hair: <input type="number" id="priceOfHair" value="0" readable></label><br>
+        <label>Paid for Hair: <input type="checkbox" id="paidForHair"></label><br>
+        <button onclick="addRecord()">Add Record</button>
+        <button onclick="exportToSpreadsheet()">Export to Spreadsheet</button>
+    </div>
+    
+    <table id="recordsTable">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Pieces Made</th>
+                <th>Pieces Sold</th>
+                <th>Remaining Inventory</th>
+                <th>Total Value (Ksh)</th>
+                <th>Cumulative Pieces Sold</th>
+                <th>Cumulative Value of Pieces Sold (Ksh)</th>
+                <th>Price of Hair (Ksh)</th> <!-- New Column for Price of Hair -->
+                <th>Paid for Hair</th> <!-- New Column for Paid Status -->
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
